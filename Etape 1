@@ -1,8 +1,0 @@
-const debut = ["Hulk", "Thor", "Captain America","Black Widow", "Iron Man", "Spider-Man"];
-const milieu = ["tient","touche","attrape", "recule", "tape", "mange", "aime"];
-const fin =["la terre","une tomate", "un jeu", "un chien", "une pierre de l'infini", "le front de Vision"];
-
-function aleatoire(num){
-  return num[Math.floor(Math.random()* num.length)];
-}
-console.log(aleatoire(debut)+ " "+ aleatoire(milieu)+ " "+ aleatoire(fin)+ "!");
