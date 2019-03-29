@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Générateur de citation aléatoire</title>
+</head>
+
+<body>
+<script>
+
+const debutMarvel = ["Hulk", "Thor", "Captain America","Black Widow", "Iron Man", "Spider-Man"];
+const milieuMarvel = ["tient","touche","attrape", "recule", "tape", "mange", "aime"];
+const finMarvel =["la terre","une tomate", "un jeu", "un chien", "une pierre de l'infini", "le front de Vision"];
+
+const debutKaamelot = ["Perceval", "Arthur", "Karadoc","Guenièvre", "Lancelot", "Léodagan"];
+const milieuKaamelot = ["trahit","touche","attrape", "tue", "tape", "mange", "aime"];
+const finKaamelot =["la baguarre","la torture", "un jeu", "un chien", "une pierre de l'infini", "le front de Vision"];
+
+function aleatoire(num){
+  return num[Math.floor(Math.random()* num.length)];
+}
+
+function citations(choixCitation, nombreCitation){
+	for(i = 1; i <= nombreCitation; i++){
+		if(choixCitation == "Marvel"){
+			console.log(aleatoire(debutMarvel)+ " "+ (aleatoire(milieuMarvel)+ " "+ (aleatoire(finMarvel)+ "!")));
+		}
+		else if(choixCitation == "Kaamelot"){
+			console.log(aleatoire(debutKaamelot)+ " "+ (aleatoire(milieuKaamelot)+ " "+ (aleatoire(finKaamelot)+ "!")));
+		}
+		else {
+			console.log("Je n'ai pas compris.");
+			break;
+		}
+	}
+}
+function boucle(){
+	const question = prompt("Voulez vous lancer le générateur de citations? (oui/non)");
+	if (question === "oui"){
+		const nombreCitation = prompt("Veuillez séléctionner entre 1 et 5 citations");
+		if ((nombreCitation <= 5) && (nombreCitation > 0)){
+			const choixCitation = prompt("Veuillez choisir le genre de vos citations en saisissant Marvel ou Kaamelot");
+			citations(choixCitation,nombreCitation);
+			boucle(question);
+			return;
+		} else {
+			console.log("Au revoir.");
+		}
+	} else {
+		console.log("Au revoir");
+	}
+}
+boucle();
+</script>
+</body>
+</html> 
