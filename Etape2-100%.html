@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Générateur de citation aléatoire</title>
+</head>
+
+<body>
+<script>
+
+const citations = {
+  marvel: {
+    start: ['Hulk','Thor','Captain America','Black Widow','Iron Man','Spider-Man'],
+    middle: ['tient','touche','attrape','recule','tape','mange','aime'],
+    end: ['la terre','une tomate','un jeu','un chien',"une pierre de l'infini",'le front de Vision']
+  },
+  kaamelot: {
+    start: ['Perceval','Arthur','Karadoc','Guenièvre','Lancelot','Léodagan'],
+    middle: ['trahit','touche','attrape','tue','tape','mange','aime'],
+    end: ['la baguarre','la torture','un jeu','un chien']
+  }
+};
+
+class Generator {
+  constructor(citations) {
+    this.citations = citations;
+  }
+
+  static aleatoire(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+
+  static renvoiDMF(lore) {
+    return `${Generator.aleatoire(lore.start)} ${Generator.aleatoire(lore.middle)} ${Generator.aleatoire(lore.end)}`;
+  }
+
+  Citation(citationLore) {
+    switch (citationLore) {
+      case 'Kaamelot':
+        return Generator.renvoiDMF(this.citations.kaamelot);
+      case 'Marvel':
+        return Generator.renvoiDMF(this.citations.marvel);
+      default:
+        return "Je n'ai pas compris";
+    }
+  }
+}
+
+const stock = new Generator(citations);
+
+function boucle(){
+	const oui = prompt("Voulez vous lancer le générateur de citations? (oui/non)");
+	if (oui === "oui"){
+		const qsd = prompt("Veuillez séléctionner entre 1 et 5 citations");
+		if ((qsd <= 5) && (qsd > 0)){
+			const aze = prompt("Veuillez choisir le genre de vos citations en saisissant Marvel ou Kaamelot");
+			for (let i = 0; i < qsd; i++) {
+  			console.log(stock.Citation(aze));
+		} 
+			boucle(oui);
+			return;
+		} else {
+			console.log("Au revoir.");
+		}
+	} else {
+		console.log("Au revoir");
+	}
+}
+boucle();
+
+</script>
+</body>
+</html> 
